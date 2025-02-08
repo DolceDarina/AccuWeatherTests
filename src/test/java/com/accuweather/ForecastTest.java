@@ -1,10 +1,11 @@
 package com.accuweather;
 
-import io.restassured.response.Response;
+import static org.hamcrest.Matchers.hasSize;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import io.restassured.response.Response;
 
 class ForecastTest extends BaseTest {
 
@@ -24,6 +25,6 @@ class ForecastTest extends BaseTest {
                 .body("DailyForecasts", hasSize(5))
                 .extract().response();
 
-        System.out.println("✅ Ответ API для города " + cityName + ": " + response.asString());
+        System.out.println("Ответ API для города " + cityName + ": " + response.asString());
     }
 }
